@@ -4,11 +4,13 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.alpine
+      args:
+        PROXY: 'http://172.17.0.1:7890'
     image: zhayujie/chatgpt-on-wechat
     container_name: sample-chatgpt-on-wechat
     environment:
       OPEN_AI_API_KEY: 'YOUR API KEY'
-      OPEN_AI_PROXY: ''
+      OPEN_AI_PROXY: 'http://172.17.0.1:7890'
       SINGLE_CHAT_PREFIX: '["bot", "@bot"]'
       SINGLE_CHAT_REPLY_PREFIX: '"[bot] "'
       GROUP_CHAT_PREFIX: '["@bot"]'
@@ -18,3 +20,6 @@ services:
       SPEECH_RECOGNITION: "False"
       CHARACTER_DESC: '你是ChatGPT, 一个由OpenAI训练的大型语言模型, 你旨在回答并解决人们的任何问题，并且可以使用多种语言与人交流。'
       EXPIRES_IN_SECONDS: 3600
+      DEBUG: "true"
+      OPEN_AI_BASE: "https://api.openai.com/v1"
+      request_timeout: 60
