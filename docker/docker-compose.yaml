@@ -8,6 +8,8 @@ services:
         PROXY: 'http://172.17.0.1:7890'
     image: zhayujie/chatgpt-on-wechat
     container_name: sample-chatgpt-on-wechat
+    volumes:
+      - ./config-template.json:/opt/config-template.json
     environment:
       OPEN_AI_API_KEY: 'YOUR API KEY'
       OPEN_AI_PROXY: 'http://172.17.0.1:7890'

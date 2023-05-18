@@ -62,6 +62,8 @@
 docker-compose up -d --build
 查看日志，并扫描二维码即可：
 docker logs -f sample-chatgpt-on-wechat 
+更新配置:
+修改docker-compose.yaml 后执行docker-compose up -d --build
 ```
 
 
