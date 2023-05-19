@@ -27,14 +27,14 @@ RUN apk add --no-cache \
     && export BUILD_GITHUB_TAG=${CHATGPT_ON_WECHAT_VER:-`curl -sL "https://api.github.com/repos/HuangYui/chatgpt-on-wechat/releases/latest" | \
         grep '"tag_name":' | \
         sed -E 's/.*"([^"]+)".*/\1/'`} \
-    && wget -t 3 -T 30 -nv -e ${PROXY} -O chatgpt-on-wechat-${BUILD_GITHUB_TAG}.tar.gz \
+    && wget -t 3 -T 30 -nv -O chatgpt-on-wechat-${BUILD_GITHUB_TAG}.tar.gz \
             https://github.com/HuangYui/chatgpt-on-wechat/archive/refs/tags/${BUILD_GITHUB_TAG}.tar.gz \
     && tar -xzf chatgpt-on-wechat-${BUILD_GITHUB_TAG}.tar.gz \
     && mv chatgpt-on-wechat-${BUILD_GITHUB_TAG} ${BUILD_PREFIX} \
     && rm chatgpt-on-wechat-${BUILD_GITHUB_TAG}.tar.gz \
     && cd ${BUILD_PREFIX} \
     && cp /opt/config-template.json ${BUILD_PREFIX}/config.json \
-    && /usr/local/bin/python -m pip install --no-cache --upgrade pip \
+    && /usr/local/bin/python -m pip install --proxy=${PROXY} --no-cache --upgrade pip \
     && pip install --no-cache -r requirements.txt --proxy=${PROXY} \
         && pip install --no-cache -r /opt/requirements-optional.txt --proxy=${PROXY}
 

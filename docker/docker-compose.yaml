@@ -11,6 +11,7 @@ services:
     environment:
       OPEN_AI_API_KEY: 'you api key'
       OPEN_AI_PROXY: 'http://172.17.0.1:7890'
+      proxy: "http://172.17.0.1:7890"
       SINGLE_CHAT_PREFIX: '["bot", "@bot"]'
       SINGLE_CHAT_REPLY_PREFIX: '"[bot] "'
       GROUP_CHAT_PREFIX: '["@bot"]'
@@ -25,4 +26,3 @@ services:
       request_timeout: 60
 #      channel_type: "wxy"
 #      wechaty_puppet_service_token: "你配置的chaty网关的uuid"
-#      proxy: "http://172.17.0.1:7890"
